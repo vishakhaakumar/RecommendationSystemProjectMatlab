@@ -1,0 +1,16 @@
+  data_matrix = readmatrix('C:\CIS_Masters\Sem_03\BigD\Project\Data\matrixData.csv');
+  normalized_matrix = readtable('C:\CIS_Masters\Sem_03\BigD\Project\Data\matrixData.csv');
+    %normalized_matrix = zeros(users,products);
+    rows=size(data_matrix,1);
+    cols=size(data_matrix,2);
+ 
+    for i=2
+           product_ratings=data_matrix(i,(2:cols));
+           val =  nnz(data_matrix(i,(2:cols)));
+           mean_ratings=sum(product_ratings(1,:))/val;
+           for j=1:cols-1
+           normalized_matrix(i,(2:cols)) = normalized_matrix(i,(2:cols)) - mean_ratings;
+           end
+    end
+    
+   % normalized_matrix

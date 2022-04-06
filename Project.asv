@@ -1,0 +1,25 @@
+elData = readtable('C:\CIS_Masters\Sem_03\BigD\Project\Data\SampleData.csv');
+celldata = readcell('C:\CIS_Masters\Sem_03\BigD\Project\Data\SampleData.csv','Range','A1'); 
+%------------------------ transform the data -----------------------
+    elData_1=elData(:,(1:2));
+    rows=size(elData_1,1);
+    [~,~,ic]=unique(elData_1(:,1));
+    users = max(ic);
+    products=height(elData_1(:,2));
+    MatrixData=zeros(users,products);
+    %MatrixData= array2table(MatrixData, 'VariableNames', ['he','43']);
+  %  rowNames = elData_1(:,1);
+  Matrix=zeros(2,2);
+    rowNames = {'hello', 'val'};
+     colNames = {'hello', 'val'};
+     Matrix = array2table(Matrix,'RowNames',rowNames,'VariableNames',colNames);
+     
+   % MatrixData = array2table(MatrixData,'RowNames',rowNames,'VariableNames',elData_1(:,2));
+  % data = elData_1(i,1);
+    for i=1:rows
+        MatrixData(elData_1(i,1),elData_1(i,2))=elData(i,3);
+    end
+    xlswrite('C:\CIS_Masters\Sem_03\BigD\Project\Data\transformedDataset.xlsx',MatrixData);
+    MatrixData=MatrixData(:,(351:650));
+
+% ----------------------- transform ends ----------------------------
